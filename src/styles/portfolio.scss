@@ -1,5 +1,7 @@
-@layer components {
-  .portfolio-page {
+// This file is intentionally unlayered: unlayered author styles outrank every
+// cascade layer (theme, base, components, utilities), so Tailwind preflight can
+// never override the site design regardless of how the bundler orders CSS chunks.
+.portfolio-page {
     min-height: 100vh;
     overflow-x: clip;
     background: var(--soft);
@@ -998,4 +1000,3 @@
       }
     }
   }
-}
