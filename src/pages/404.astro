@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="404 — davisk.dev"
+  description="Route not found. Head back to the work."
+>
+  <main class="notfound-section">
+    <div class="section-shell notfound-shell">
+      <span class="mono-text notfound-eyebrow">404 / ROUTE NOT FOUND</span>
+      <h1 class="section-title notfound-title">This route was never shipped.</h1>
+      <p class="notfound-copy">
+        The page you're after doesn't exist. Everything that does is one click back.
+      </p>
+      <a class="notfound-link focus-ring mono-text" href="/">← BACK TO DAVISK.DEV</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .notfound-section {
+    min-height: 78vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding-block: 96px 120px;
+  }
+
+  .notfound-shell {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .notfound-eyebrow {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+  }
+
+  .notfound-title {
+    max-width: 640px;
+    margin: 0;
+    font-size: clamp(40px, 6vw, 68px);
+  }
+
+  .notfound-copy {
+    max-width: 460px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .notfound-link {
+    margin-top: 12px;
+    color: var(--cobalt);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 4px;
+  }
+
+  .notfound-link:hover {
+    border-bottom-color: var(--cobalt);
+  }
+</style>

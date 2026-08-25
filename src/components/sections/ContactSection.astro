@@ -1,0 +1,37 @@
+---
+import ContactForm from '../islands/ContactForm';
+---
+
+<section class="section section--contact" id="contact" aria-labelledby="contact-title">
+  <div class="contact-panel section-shell reveal">
+    <div class="contact-grid">
+      <div>
+        <h2 class="contact-title" id="contact-title">Need a product engineer?</h2>
+        <p class="contact-description">
+          LinkedIn is the fast way. The form lands in my inbox too.
+        </p>
+      </div>
+      <ContactForm client:visible />
+    </div>
+  </div>
+
+  <footer class="site-footer section-shell mono-text">
+    <div class="footer-links">
+      <a class="nav-link focus-ring" href="#work">Work</a>
+      <a class="nav-link focus-ring" href="#stack">Stack</a>
+      <a class="nav-link focus-ring" href="#about">About</a>
+      <a class="nav-link focus-ring" href="#contact">Contact</a>
+      <a class="nav-link focus-ring" href="https://www.linkedin.com/in/kelly-davis-5b42303a7/" target="_blank" rel="noreferrer">LinkedIn / Kelly Davis</a>
+      {/* TODO: restore resume link when the public resume ships. */}
+    </div>
+    <p>
+      Built with{' '}
+      <a class="footer-credit-link focus-ring" href="https://bun.com/" target="_blank" rel="noreferrer">Bun</a>{' '}
+      +{' '}
+      <a class="footer-credit-link focus-ring" href="https://astro.build/" target="_blank" rel="noreferrer">Astro</a>,{' '}
+      Designed with{' '}
+      <a class="footer-credit-link focus-ring" href="https://kombai.com/" target="_blank" rel="noreferrer">Kombai</a>{' '}
+      · © 2026 davisk.dev
+    </p>
+  </footer>
+</section>

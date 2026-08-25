@@ -1,0 +1,29 @@
+---
+import { values } from '../../content/portfolio';
+---
+
+<section class="section section--about" id="about" aria-labelledby="about-title">
+  <div class="about-grid section-shell reveal">
+    <aside>
+      <h2 class="about-title" id="about-title">I steer the product.</h2>
+      <div class="values-list mono-text">
+        <span class="values-label">VALUES</span>
+        <div class="values-copy">
+          {values.map((value) => <span>{value}</span>)}
+        </div>
+      </div>
+    </aside>
+
+    <div class="about-copy">
+      <p class="about-primary">
+        Hi, I’m Kelly. Product Engineer in Honolulu. I design systems and use AI to build them.
+      </p>
+      <p class="about-secondary">
+        Every project starts as a spec detailed enough for AI to implement. I make the architecture calls, AI produces the code, and I verify, test, and ship it. I do that with Qoder IDE, Factory Droid, Zed, or Windsurf (Devin) for code, Aura.build, Magicpath, and Kombai for design, and a local AI stack I run myself that powers Hermes and OpenJarvis, two agents I use daily.
+      </p>
+      <p class="about-secondary">
+        Off-screen I experiment with plant-based recipes the same way I work through code: change one thing, test it, keep what works. I watch anime for the visual storytelling, which is where a lot of my UI instincts come from. I follow football for the chess match underneath the game, the schemes, the adjustments, and for the fun of watching with friends and family!
+      </p>
+    </div>
+  </div>
+</section>

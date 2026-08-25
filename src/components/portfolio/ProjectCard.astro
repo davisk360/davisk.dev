@@ -1,0 +1,114 @@
+---
+import { ArrowUpRight } from 'lucide-react';
+import type { Project } from '../../content/portfolio';
+import GateInitiativeArt from './art/GateInitiativeArt.astro';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+const liveLink = project.links.find((link) => link.kind === 'live' && link.href);
+const githubLink = project.links.find((link) => link.kind === 'github' && link.href);
+
+interface MetricPart {
+  prefix?: string;
+  text: string;
+  href?: string;
+  aria?: string;
+  arrow?: boolean;
+}
+const metricParts: MetricPart[] = [];
+if (project.metric) metricParts.push({ text: project.metric });
+if (liveLink && project.liveLabel) {
+  metricParts.push({
+    prefix: 'LIVE / ',
+    text: project.liveLabel,
+    href: liveLink.href,
+    aria: `Open ${project.title} live site`,
+  });
+}
+if (githubLink) {
+  metricParts.push({
+    prefix: 'GITHUB / ',
+    text: project.title,
+    href: githubLink.href,
+    aria: `Open ${project.title} GitHub repository`,
+    arrow: true,
+  });
+}
+const projectClasses = ['surface-card', 'work-card'];
+if (project.featured) projectClasses.push('project-card--featured');
+const thumbClasses = ['project-thumb'];
+if (project.imageFit === 'center') thumbClasses.push('project-thumb--center');
+if (liveLink) thumbClasses.push('focus-ring');
+---
+
+<article class={projectClasses.join(' ')}>
+  {project.image ? (
+    liveLink ? (
+      <a
+        class={thumbClasses.join(' ')}
+        href={liveLink.href}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Open ${project.title} live site`}
+      >
+        <img src={project.image} alt={`${project.title} product screenshot`} loading="lazy" />
+      </a>
+    ) : (
+      <div class={thumbClasses.join(' ')}>
+        <img src={project.image} alt={`${project.title} product screenshot`} loading="lazy" />
+      </div>
+    )
+  ) : (
+    <GateInitiativeArt />
+  )}
+  <div class="project-info">
+    <div class="project-heading-row">
+      <div class="project-copy">
+        <h3 class="project-title">{project.title}</h3>
+        <p class="project-description">{project.description}</p>
+      </div>
+      {liveLink ? (
+        <a
+          class="project-link focus-ring"
+          href={liveLink.href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Open ${project.title} live site`}
+        >
+          <ArrowUpRight size={15} strokeWidth={1.7} aria-hidden="true" />
+        </a>
+      ) : null}
+    </div>
+    <div class="project-evidence">
+      <div class="project-tags mono-text" aria-label={`${project.title} technologies`}>
+        {project.tags.map((tag) => <span class="tag-chip">[{tag}]</span>)}
+      </div>
+      <p class="project-metric mono-text">
+        {metricParts.map((part, index) => (
+          <span class="metric-part">
+            {index > 0 && <span class="metric-sep"> · </span>}
+            {part.prefix && <span>{part.prefix}</span>}
+            {part.href ? (
+              <a
+                class="metric-anchor focus-ring"
+                href={part.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={part.aria}
+              >
+                {part.text}
+                {part.arrow && <span class="metric-arrow" aria-hidden="true"> ↗</span>}
+              </a>
+            ) : (
+              <span>{part.text}</span>
+            )}
+          </span>
+        ))}
+      </p>
+    </div>
+  </div>
+</article>

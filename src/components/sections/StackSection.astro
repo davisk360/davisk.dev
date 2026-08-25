@@ -1,0 +1,21 @@
+---
+import { stackRows } from '../../content/portfolio';
+---
+
+<section class="section section--stack" id="stack" aria-labelledby="stack-title">
+  <div class="section-shell reveal">
+    <div class="section-heading">
+      <h2 class="section-title" id="stack-title">The stack behind the steering.</h2>
+      <span class="section-meta mono-text">CATEGORIZED / NO MARQUEE</span>
+    </div>
+
+    <div class="stack-grid">
+      {stackRows.map((row) => (
+        <div class="stack-row">
+          <p class="stack-label mono-text">{row.label}</p>
+          <p class="stack-values">{row.values}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import { whatIDoItems } from '../../content/portfolio';
+---
+
+<section class="section section--what" aria-labelledby="what-title">
+  <div class="section-shell">
+    <div class="section-heading reveal">
+      <h2 class="section-title" id="what-title">What I do</h2>
+      <span class="section-meta mono-text">DESIGN / BUILD / SHIP</span>
+    </div>
+
+    <div class="what-grid">
+      {whatIDoItems.map((item) => (
+        <article class="surface-card what-card reveal">
+          <span class="card-number mono-text">{item.number}</span>
+          <h3 class="card-title">{item.title}</h3>
+          <p class="card-description">{item.description}</p>
+          <p class="card-tools mono-text">{item.tools}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+import { Menu, X } from 'lucide-react';
+---
+
+<div class="header-sticky" data-header>
+  <header class="site-header content-shell" data-site-header>
+    <a class="brand focus-ring" href="#top" aria-label="Kelly Davis home">
+      <span class="brand-name">DAVISK.DEV</span>
+      <span class="brand-role mono-text">PRODUCT ENGINEER</span>
+    </a>
+
+    <nav class="desktop-links" aria-label="Primary navigation">
+      <a class="nav-link focus-ring" href="#work">Work</a>
+      <a class="nav-link focus-ring" href="#stack">Stack</a>
+      <a class="nav-link focus-ring" href="#about">About</a>
+      <a class="nav-link focus-ring" href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      {/* TODO: restore resume link when the public resume ships. */}
+      <button
+        class="menu-toggle focus-ring"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open menu"
+      >
+        <Menu className="menu-icon-open" size={18} strokeWidth={1.7} aria-hidden="true" />
+        <X className="menu-icon-close" size={18} strokeWidth={1.7} aria-hidden="true" />
+      </button>
+    </div>
+  </header>
+
+  <nav id="mobile-nav" class="mobile-links" aria-label="Mobile navigation">
+    <a class="nav-link focus-ring" href="#work">Work</a>
+    <a class="nav-link focus-ring" href="#stack">Stack</a>
+    <a class="nav-link focus-ring" href="#about">About</a>
+    <a class="nav-link focus-ring" href="#contact">Contact</a>
+  </nav>
+</div>
+
+<script>
+  const root = document.querySelector('[data-header]');
+  const toggle = root?.querySelector('.menu-toggle');
+  const nav = root?.querySelector('#mobile-nav');
+  if (root && toggle && nav) {
+    const setOpen = (open: boolean) => {
+      root.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    toggle.addEventListener('click', () => setOpen(!root.classList.contains('open')));
+    nav.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setOpen(false);
+    });
+    document.addEventListener('click', (e) => {
+      if (root.classList.contains('open') && !root.contains(e.target as Node)) setOpen(false);
+    });
+    window.matchMedia('(min-width: 601px)').addEventListener('change', (e) => {
+      if (e.matches) setOpen(false);
+    });
+  }
+</script>

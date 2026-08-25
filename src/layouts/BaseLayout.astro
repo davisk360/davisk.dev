@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+import '../styles/portfolio.scss';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Kelly Davis — Product Engineer',
+  description = 'Kelly Davis is a Product Engineer who designs systems, uses AI to build them, and ships working products.',
+} = Astro.props;
+
+const canonicalUrl = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site)
+  : Astro.url;
+const ogImageUrl = new URL('/og.png', Astro.site ?? 'https://davisk.dev/').toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#EEF0FF" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="davisk.dev" />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImageUrl} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

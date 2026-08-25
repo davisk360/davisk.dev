@@ -1,0 +1,17 @@
+---
+import { projects } from '../../content/portfolio';
+import ProjectCard from '../portfolio/ProjectCard.astro';
+---
+
+<section class="section section--work" id="work" aria-labelledby="work-title">
+  <div class="section-shell">
+    <div class="section-heading reveal">
+      <h2 class="section-title" id="work-title">Four codebases worth inspecting.</h2>
+      <span class="section-meta mono-text">REAL REPOS / REAL TESTS</span>
+    </div>
+
+    <div class="project-grid">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </div>
+</section>
