@@ -9,13 +9,66 @@ interface Props {
 
 const {
   title = 'Kelly Davis — Product Engineer',
-  description = 'Kelly Davis is a Product Engineer who designs systems, uses AI to build them, and ships working products.',
+  description = 'Kelly Davis is a Product Engineer in Honolulu who designs systems, uses AI to build them, and ships working products.',
 } = Astro.props;
 
-const canonicalUrl = Astro.site
-  ? new URL(Astro.url.pathname, Astro.site)
-  : Astro.url;
-const ogImageUrl = new URL('/og.png', Astro.site ?? 'https://davisk.dev/').toString();
+const site = Astro.site ?? new URL('https://davisk.dev');
+const canonicalUrl = new URL(Astro.url.pathname, site).toString();
+const ogImageUrl = new URL('/og.png', site).toString();
+const headshotUrl = new URL('/images/headshot-portrait.png', site).toString();
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': new URL('/#person', site).toString(),
+      name: 'Kelly Davis',
+      alternateName: 'davisk',
+      url: site.toString(),
+      image: headshotUrl,
+      jobTitle: 'Product Engineer',
+      hasOccupation: {
+        '@type': 'Occupation',
+        name: 'Product Engineer',
+        occupationLocation: {
+          '@type': 'City',
+          name: 'Honolulu',
+        },
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Honolulu',
+        addressRegion: 'HI',
+        addressCountry: 'US',
+      },
+      knowsAbout: [
+        'AI-augmented software development',
+        'System design',
+        'TypeScript',
+        'React',
+        'Astro',
+        'Next.js',
+        'Node.js',
+        'Flutter',
+      ],
+      sameAs: [
+        'https://www.linkedin.com/in/kelly-davis-5b42303a7/',
+        'https://github.com/davisk360',
+        'https://github.com/Brimstow',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': new URL('/#website', site).toString(),
+      url: site.toString(),
+      name: 'davisk.dev',
+      description,
+      inLanguage: 'en',
+      publisher: { '@id': new URL('/#person', site).toString() },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -25,21 +78,32 @@ const ogImageUrl = new URL('/og.png', Astro.site ?? 'https://davisk.dev/').toStr
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="theme-color" content="#EEF0FF" />
+    <meta name="author" content="Kelly Davis" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="davisk.dev" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content="davisk.dev" />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Kelly Davis, Product Engineer — davisk.dev" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="Kelly Davis, Product Engineer — davisk.dev" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
     <slot />
