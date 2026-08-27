@@ -32,6 +32,8 @@ logs/
 
 # netlify local state
 .netlify/
+# netlify dev edge-runtime lockfile (regenerated per CLI version)
+deno.lock
 
 # private assets (never committed, never deployed)
 private/

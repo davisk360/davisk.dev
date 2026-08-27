@@ -44,10 +44,10 @@ export const LIMIT_PER_DAY = 40;
 export const FLAG_TTL_MS = 30 * 24 * 60 * 60 * 1000;
 
 /** Trap paths served by honey-trap.ts; linked (hidden) from BaseLayout. */
-export const TRAP_PATHS: readonly string[] = [
+export const TRAP_PATHS = [
   '/archive/resume-draft-v2.pdf',
   '/downloads/portfolio-assets.zip',
-];
+] as const;
 
 /**
  * Bucket an IP for rate limiting / flagging. IPv6 collapses to its /64 prefix

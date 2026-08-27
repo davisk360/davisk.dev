@@ -97,15 +97,39 @@ const schema = {
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Kelly Davis, Product Engineer — davisk.dev" />
+    <meta
+      property="og:image:alt"
+      content="Kelly Davis, Product Engineer — davisk.dev"
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
-    <meta name="twitter:image:alt" content="Kelly Davis, Product Engineer — davisk.dev" />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <meta
+      name="twitter:image:alt"
+      content="Kelly Davis, Product Engineer — davisk.dev"
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(schema)}
+    />
   </head>
   <body>
     <slot />
+    <!-- Anti-scrape honeypots: invisible to humans, followed only by automated
+         HTML parsers. Bound to netlify/edge-functions/honey-trap.ts — do not remove. -->
+    <a
+      href="/archive/resume-draft-v2.pdf"
+      class="hidden"
+      aria-hidden="true"
+      tabindex="-1"
+      rel="nofollow"></a>
+    <a
+      href="/downloads/portfolio-assets.zip"
+      class="hidden"
+      aria-hidden="true"
+      tabindex="-1"
+      rel="nofollow"></a>
   </body>
 </html>

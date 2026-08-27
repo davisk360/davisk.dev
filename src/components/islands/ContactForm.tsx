@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type SyntheticEvent } from 'react';
+import { useRef, useState, type SyntheticEvent } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -13,12 +13,38 @@ const WEB3FORMS_ACCESS_KEY: string =
   (import.meta as unknown as { env?: Record<string, string> }).env
     ?.PUBLIC_WEB3FORMS_KEY ?? '';
 
+// Anti-scrape traps (spec §5): the honey-trap edge function flags the
+// caller's IP in the same Blobs store the resume gate reads.
+const HONEY_TRAP_URL = '/archive/resume-draft-v2.pdf';
+const MIN_HUMAN_SUBMIT_MS = 2_000;
+
 export default function ContactForm() {
   const [status, setStatus] = useState<ContactStatus>('idle');
+  const mountedAt = useRef(Date.now());
+
+  // Silent-drop path for bots: identical success UI, no network call, and no
+  // signal about which defense tripped.
+  function fakeSuccess(form: HTMLFormElement) {
+    form.reset();
+    setStatus('success');
+  }
+
+  // Fire-and-forget: the honey-trap edge function writes the 30-day IP flag
+  // that the resume gate reads.
+  function flagActor() {
+    fetch(HONEY_TRAP_URL).catch(() => {});
+  }
 
   async function handleSubmit(event: SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
+
+    // Hidden botcheck field filled → bot. Flag the IP and drop silently.
+    if (String(new FormData(form).get('botcheck') ?? '') !== '') {
+      flagActor();
+      fakeSuccess(form);
+      return;
+    }
 
     if (!form.checkValidity()) {
       setStatus('invalid');
@@ -27,6 +53,14 @@ export default function ContactForm() {
 
     if (!WEB3FORMS_ACCESS_KEY) {
       setStatus('error');
+      return;
+    }
+
+    // Valid form submitted within 2s of mount → almost certainly automated.
+    // Silent drop only (no IP flag): a rare human false positive costs one
+    // message, not a 30-day resume block.
+    if (Date.now() - mountedAt.current < MIN_HUMAN_SUBMIT_MS) {
+      fakeSuccess(form);
       return;
     }
 
@@ -65,7 +99,9 @@ export default function ContactForm() {
   return (
     <form className="contact-form" onSubmit={handleSubmit} noValidate={false}>
       <div className="field-wrap">
-        <Label className="sr-only" htmlFor="contact-name">Name</Label>
+        <Label className="sr-only" htmlFor="contact-name">
+          Name
+        </Label>
         <Input
           id="contact-name"
           name="name"
@@ -76,7 +112,9 @@ export default function ContactForm() {
         />
       </div>
       <div className="field-wrap">
-        <Label className="sr-only" htmlFor="contact-email">Email</Label>
+        <Label className="sr-only" htmlFor="contact-email">
+          Email
+        </Label>
         <Input
           id="contact-email"
           name="email"
@@ -88,7 +126,9 @@ export default function ContactForm() {
         />
       </div>
       <div className="field-wrap">
-        <Label className="sr-only" htmlFor="contact-message">Message</Label>
+        <Label className="sr-only" htmlFor="contact-message">
+          Message
+        </Label>
         <Textarea
           id="contact-message"
           name="message"
@@ -105,7 +145,11 @@ export default function ContactForm() {
         autoComplete="off"
         aria-hidden="true"
       />
-      <Button className="contact-submit" type="submit" disabled={status === 'sending'}>
+      <Button
+        className="contact-submit"
+        type="submit"
+        disabled={status === 'sending'}
+      >
         <span>{status === 'sending' ? 'SENDING…' : 'SEND MESSAGE'}</span>
         <ArrowUpRight size={15} strokeWidth={1.7} aria-hidden="true" />
       </Button>
