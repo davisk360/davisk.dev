@@ -1,0 +1,9 @@
+# Baseline security headers for every response.
+# Deliberately no X-Robots-Tag (indexing must stay open, resume included)
+# and no CSP yet — deferred to the Concierge embed pass per the anti-scrape
+# spec (docs/superpowers/specs/2026-08-27-antiscrape-hardening-design.md).
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
