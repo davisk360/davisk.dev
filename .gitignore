@@ -33,6 +33,9 @@ logs/
 # impeccable design-tooling artifacts
 .impeccable/
 
+# superpowers spec tooling artifacts
+docs/superpowers/
+
 # netlify local state
 .netlify/
 # netlify dev edge-runtime lockfile (regenerated per CLI version)
