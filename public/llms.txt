@@ -1,0 +1,26 @@
+# Kelly Davis — davisk.dev
+
+> Kelly Davis (davisk) is a Product Engineer in Honolulu, HI, practicing AI-augmented software development: rigorous specs first, AI-assisted implementation, and personal verification of every line. This portfolio documents four shipped, inspectable codebases.
+
+## Portfolio
+
+- [Home](https://davisk.dev/): overview of the design → build → ship workflow and selected work
+- [Case studies](https://davisk.dev/case-studies/): in-depth write-ups of real projects and the decisions behind them
+- [Contact](https://davisk.dev/#contact): contact form and direct outreach
+
+## Projects
+
+- [New Media Tek](https://newmediatek.net/): B2B consultancy site co-founded and built end to end — custom visual CMS, AI lead-capture chatbot, SEO/AEO/GEO, security-hardened (Astro, InsForge, Netlify)
+- [ThumPiks](https://thumbnail-maker-studio.netlify.app/): AI YouTube thumbnail studio — full canvas editor, multi-platform AI generation, Stripe + Polar credit billing (currently staging)
+- [Asyndence](https://github.com/Brimstow/Asyndence): Flutter desktop focus timer built on ultradian rhythms — guided breathing, recovery protocols, BLE/HRV biometrics, 900+ tests
+- [gateINITIATIVE](https://github.com/Brimstow/gateINITIATIVE): standalone filesystem-watcher enforcement daemon for AI-driven development — IDE- and VCS-agnostic
+
+## Profiles
+
+- [GitHub — professional account](https://github.com/davisk360): production work and consultancy
+- [GitHub — product label](https://github.com/Brimstow): shipped products under a handle
+- [LinkedIn](https://www.linkedin.com/in/kelly-davis-5b42303a7/): professional history
+
+## Optional
+
+- [Resume](https://davisk.dev/resume.pdf): Product Engineer resume (served to browsers, refused to bots)
