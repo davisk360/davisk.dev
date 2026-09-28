@@ -10,6 +10,7 @@ import {
   OFFICIAL_BOT_TOKENS,
   STORE_NAME,
   TRAP_PATHS,
+  clientIp,
   flagKey,
   normalizeIp,
 } from './lib/config.ts';
@@ -22,12 +23,10 @@ const EMPTY_ZIP = new Uint8Array([
 
 export default async function handler(
   request: Request,
-  _context: Context,
+  context: Context,
 ): Promise<Response> {
   const userAgent = request.headers.get('user-agent') ?? '';
-  const ip = normalizeIp(
-    request.headers.get('x-nf-client-connection-ip') ?? 'unknown',
-  );
+  const ip = normalizeIp(clientIp(context, request));
 
   // Official bots can stumble onto trap URLs through link extraction; the
   // gate skips them anyway, so never flag them — keeps the flag set clean.

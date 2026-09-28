@@ -75,3 +75,17 @@ export function normalizeIp(ip: string): string {
 export function flagKey(ip: string): string {
   return `flag:${ip}`;
 }
+
+/**
+ * Real client IP for rate limiting / flagging. Netlify Edge exposes it on
+ * context.ip; the x-nf-client-connection-ip header was observed MISSING in
+ * production (2026-08-27), which collapsed every client to 'unknown' and let
+ * one bot's honeypot hit block all humans. Prefer context.ip always.
+ */
+export function clientIp(context: { ip?: string }, request: Request): string {
+  return (
+    context.ip ??
+    request.headers.get('x-nf-client-connection-ip') ??
+    'unknown'
+  );
+}

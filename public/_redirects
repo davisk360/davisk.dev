@@ -1,0 +1,6 @@
+# Force the bare Netlify subdomain to the custom domain so Google sees one
+# canonical host. Without this, davisk.netlify.app serves a full duplicate of
+# the site (HTTP 200, no redirect) and Google indexes it as the canonical copy.
+# Domain-level redirect syntax per Netlify docs (routing/redirects/redirect-options).
+http://davisk.netlify.app/*  https://davisk.dev/:splat  301!
+https://davisk.netlify.app/*  https://davisk.dev/:splat  301!

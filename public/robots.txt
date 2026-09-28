@@ -2,11 +2,11 @@
 #
 # Policy summary (RFC 9309: a crawler that matches a named group follows
 # that group's rules ONLY — everyone else falls through to User-agent: *):
-#   - The whole site is crawlable, /resume.pdf included, for search and
+#   - The whole site is crawlable, the resume files included, for search and
 #     answer-engine bots (Googlebot, Bingbot, OAI-SearchBot, ChatGPT-User,
 #     Claude-SearchBot, PerplexityBot, Applebot) and any unlisted crawler.
-#   - Training-class AI crawlers and SEO spiders are excluded from
-#     /resume.pdf only; every other path stays open to them.
+#   - Training-class AI crawlers and SEO spiders are excluded from the
+#     resume files only; every other path stays open to them.
 #
 # WARNING: never move a /resume.pdf Disallow into the User-agent: * group —
 # that would also block it for Googlebot/Bingbot and break SEO/AEO/GEO.
@@ -29,6 +29,7 @@ User-agent: FacebookBot
 User-agent: Imagesift
 Allow: /
 Disallow: /resume.pdf
+Disallow: /Kelly_Davis_Resume_GTM_Engineer.pdf
 
 # SEO spiders — same treatment as the training class.
 User-agent: AhrefsBot
@@ -36,5 +37,6 @@ User-agent: SemrushBot
 User-agent: MJ12bot
 Allow: /
 Disallow: /resume.pdf
+Disallow: /Kelly_Davis_Resume_GTM_Engineer.pdf
 
 Sitemap: https://davisk.dev/sitemap-index.xml

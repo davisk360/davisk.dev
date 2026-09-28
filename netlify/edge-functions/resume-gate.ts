@@ -11,6 +11,7 @@ import {
   SCRAPER_UA_REGEX,
   STORE_NAME,
   TRAINING_BOT_REGEX,
+  clientIp,
   flagKey,
   normalizeIp,
 } from './lib/config.ts';
@@ -39,9 +40,7 @@ export default async function handler(
 
   // Everything below reads/writes Blobs and fails open on any storage error —
   // a Netlify hiccup must never block a real recruiter.
-  const ip = normalizeIp(
-    request.headers.get('x-nf-client-connection-ip') ?? 'unknown',
-  );
+  const ip = normalizeIp(clientIp(context, request));
 
   try {
     const store = getStore(STORE_NAME);
@@ -108,4 +107,6 @@ function deny(): Response {
   });
 }
 
-export const config: Config = { path: '/resume.pdf' };
+export const config: Config = {
+  path: ['/resume.pdf', '/Kelly_Davis_Resume_GTM_Engineer.pdf'],
+};

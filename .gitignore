@@ -30,6 +30,9 @@ logs/
 .qoder/
 .qodo/
 
+# impeccable design-tooling artifacts
+.impeccable/
+
 # netlify local state
 .netlify/
 # netlify dev edge-runtime lockfile (regenerated per CLI version)
