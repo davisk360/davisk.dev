@@ -4,7 +4,7 @@ import { Download, Menu, X } from 'lucide-react';
 
 <div class="header-sticky" data-header>
   <header class="site-header content-shell" data-site-header>
-    <a class="brand focus-ring" href="#top" aria-label="Kelly Davis home">
+    <a class="brand focus-ring" href="/" aria-label="Kelly Davis home">
       <span class="brand-name">DAVISK.DEV</span>
       <span class="brand-role mono-text">PRODUCT ENGINEER</span>
     </a>
@@ -53,6 +53,18 @@ import { Download, Menu, X } from 'lucide-react';
   const root = document.querySelector('[data-header]');
   const toggle = root?.querySelector('.menu-toggle');
   const nav = root?.querySelector('#mobile-nav');
+  const brand = root?.querySelector('.brand');
+  // Scrolled: brand scrolls to top like the home page's #top anchor did.
+  // At top: on a subpage the href='/' sends you home; on the home page we
+  // swallow it so the logo doesn't trigger a pointless reload.
+  brand?.addEventListener('click', (e) => {
+    if (window.scrollY > 8) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (location.pathname === '/') {
+      e.preventDefault();
+    }
+  });
   if (root && toggle && nav) {
     const setOpen = (open: boolean) => {
       root.classList.toggle('open', open);
