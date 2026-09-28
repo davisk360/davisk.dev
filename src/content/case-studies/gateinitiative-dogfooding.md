@@ -5,7 +5,7 @@ date: 2026-09-25
 eyebrow: 'case study / dogfooding'
 project: 'gateINITIATIVE'
 repoUrl: 'https://github.com/Brimstow/gateINITIATIVE'
-docUrl: 'https://github.com/Brimstow/gateINITIATIVE/blob/main/docs/case-studies/dogfooding.md'
+docUrl: 'https://github.com/Brimstow/gateINITIATIVE/blob/master/docs/case-studies/dogfooding.md'
 ---
 
 September 2026. Before public release. Every bug below was found and fixed in one session, test-first.
@@ -64,4 +64,4 @@ The first two hits from the new gate were false positives, not real violations. 
 
 And the process itself: I don't work on this alone. I spec with an AI pair — it gives me a few options, I research in the moment, I pick one, we build it. The tests run the same way: I drive a test-first setup, I decide what needs checking, the tests get written for me — my job is reading what falls out. Most of my "method" is instinct plus that loop, and this session was no different. I'm not going to pretend I foresaw a YAML alias bug. I asked for a test that seemed obvious, it failed weirdly, and I followed where it pointed. Five times.
 
-The full changelog for these fixes is in [CHANGELOG.md](https://github.com/Brimstow/gateINITIATIVE/blob/main/CHANGELOG.md) under *Unreleased*.
+The full changelog for these fixes is in [CHANGELOG.md](https://github.com/Brimstow/gateINITIATIVE/blob/master/CHANGELOG.md) under *Unreleased*.
