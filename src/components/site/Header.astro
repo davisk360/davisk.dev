@@ -1,5 +1,5 @@
 ---
-import { Menu, X } from 'lucide-react';
+import { Download, Menu, X } from 'lucide-react';
 ---
 
 <div class="header-sticky" data-header>
@@ -10,14 +10,22 @@ import { Menu, X } from 'lucide-react';
     </a>
 
     <nav class="desktop-links" aria-label="Primary navigation">
-      <a class="nav-link focus-ring" href="#work">Work</a>
-      <a class="nav-link focus-ring" href="#stack">Stack</a>
-      <a class="nav-link focus-ring" href="#about">About</a>
-      <a class="nav-link focus-ring" href="#contact">Contact</a>
+      <a class="nav-link focus-ring" href="/#work">Work</a>
+      <a class="nav-link focus-ring" href="/#stack">Stack</a>
+      <a class="nav-link focus-ring" href="/#about">About</a>
+      <a class="nav-link focus-ring" href="/case-studies">Case Studies</a>
+      <a class="nav-link focus-ring" href="/#contact">Contact</a>
     </nav>
 
     <div class="header-actions">
-      {/* TODO: restore resume link when the public resume ships. */}
+      <a
+        class="resume-link focus-ring"
+        href="/resume.pdf"
+        download="Kelly_Davis_Resume_Product_Engineer.pdf"
+      >
+        <Download className="resume-icon" size={18} strokeWidth={2.25} aria-hidden="true" />
+        <span>Resume</span>
+      </a>
       <button
         class="menu-toggle focus-ring"
         type="button"
@@ -32,10 +40,12 @@ import { Menu, X } from 'lucide-react';
   </header>
 
   <nav id="mobile-nav" class="mobile-links" aria-label="Mobile navigation">
-    <a class="nav-link focus-ring" href="#work">Work</a>
-    <a class="nav-link focus-ring" href="#stack">Stack</a>
-    <a class="nav-link focus-ring" href="#about">About</a>
-    <a class="nav-link focus-ring" href="#contact">Contact</a>
+    <a class="nav-link focus-ring" href="/#work">Work</a>
+    <a class="nav-link focus-ring" href="/#stack">Stack</a>
+    <a class="nav-link focus-ring" href="/#about">About</a>
+    <a class="nav-link focus-ring" href="/case-studies">Case Studies</a>
+    <a class="nav-link focus-ring" href="/#contact">Contact</a>
+    <a class="nav-link focus-ring" href="/resume.pdf" download="Kelly_Davis_Resume_Product_Engineer.pdf">Resume</a>
   </nav>
 </div>
 

@@ -1,0 +1,80 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/site/Header.astro';
+
+export async function getStaticPaths() {
+  const studies = await getCollection('caseStudies');
+  return studies.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+
+<BaseLayout
+  title={`${entry.data.title} — davisk.dev`}
+  description={entry.data.description}
+>
+  <div class="portfolio-page" id="top">
+    <Header />
+    <main>
+      <article class="case-study-article">
+        <a class="case-study-back mono-text focus-ring" href="/case-studies"
+          >&larr; CASE STUDIES</a
+        >
+        <header class="case-study-head">
+          {entry.data.eyebrow && <span class="eyebrow">{entry.data.eyebrow}</span>}
+          <h1 class="case-study-title">{entry.data.title}</h1>
+          <p class="case-study-meta mono-text">
+            <span>{formatDate(entry.data.date)}</span>
+            <span aria-hidden="true">&middot;</span>
+            <span>{entry.data.project}</span>
+            <span aria-hidden="true">&middot;</span>
+            <a
+              class="focus-ring"
+              href={entry.data.repoUrl}
+              target="_blank"
+              rel="noreferrer">REPO &#8599;</a
+            >
+          </p>
+        </header>
+        <div class="case-study-body">
+          <Content />
+        </div>
+        <footer class="case-study-foot">
+          <span class="case-study-foot-label mono-text">VERIFY /</span>
+          <a
+            class="focus-ring"
+            href={entry.data.repoUrl}
+            target="_blank"
+            rel="noreferrer">Run the commands yourself in the repo &#8599;</a
+          >
+          {
+            entry.data.docUrl && (
+              <a
+                class="focus-ring"
+                href={entry.data.docUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Same writeup on GitHub &#8599;
+              </a>
+            )
+          }
+        </footer>
+      </article>
+    </main>
+  </div>
+</BaseLayout>

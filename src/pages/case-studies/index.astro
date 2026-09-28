@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/site/Header.astro';
+
+const studies = (await getCollection('caseStudies')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+---
+
+<BaseLayout
+  title="Case studies — davisk.dev"
+  description="Engineering case studies by Kelly Davis — real repos, real bugs, real fixes."
+>
+  <div class="portfolio-page" id="top">
+    <Header />
+    <main>
+      <div class="case-study-index">
+        <div class="section-heading">
+          <h1 class="section-title">Case studies.</h1>
+          <span class="section-meta mono-text">WRITEUPS / PROOF</span>
+        </div>
+        <div class="case-study-list">
+          {
+            studies.map((study) => (
+              <a
+                class="surface-card case-study-card focus-ring"
+                href={`/case-studies/${study.id}`}
+                aria-label={`Read case study: ${study.data.title}`}
+              >
+                {study.data.eyebrow && (
+                  <span class="eyebrow">{study.data.eyebrow}</span>
+                )}
+                <h2 class="case-study-card-title">{study.data.title}</h2>
+                <p class="case-study-card-desc">{study.data.description}</p>
+                <span class="case-study-card-meta mono-text">
+                  {formatDate(study.data.date)} · {study.data.project}
+                </span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </main>
+  </div>
+</BaseLayout>

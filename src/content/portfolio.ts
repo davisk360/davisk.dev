@@ -1,6 +1,6 @@
 export type ProjectArtKind = 'gate-initiative';
 
-export type ProjectLinkKind = 'live' | 'github';
+export type ProjectLinkKind = 'live' | 'github' | 'case-study';
 
 export type ContactStatus = 'idle' | 'invalid' | 'sending' | 'success' | 'error';
 
@@ -141,6 +141,11 @@ export const projects: Project[] = [
     metric: '5,000+ LINES · 240 TESTS',
     art: 'gate-initiative',
     links: [
+      {
+        label: 'Case study / First audit',
+        href: '/case-studies/gateinitiative-dogfooding',
+        kind: 'case-study',
+      },
       {
         label: 'GitHub / gateINITIATIVE',
         href: 'https://github.com/Brimstow/gateINITIATIVE',
