@@ -69,8 +69,8 @@ export const projects: Project[] = [
     eyebrow: 'new media tek / cms',
     status: 'LIVE',
     description:
-      'Media platform with admin CMS and AI chatbot that logs conversations to Supabase.',
-    tags: ['React', 'Astro 5', 'Next.js', 'TypeScript', 'Supabase'],
+      'Media platform with admin CMS and AI chatbot that logs conversations to InsForge.',
+    tags: ['React', 'Astro 5', 'Next.js', 'TypeScript', 'InsForge'],
     liveLabel: 'NEWMEDIATEK.NET',
     image: '/thumbs/new-media-tek.png',
     imageFit: 'top',
