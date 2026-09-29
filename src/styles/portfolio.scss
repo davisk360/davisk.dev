@@ -402,23 +402,8 @@
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
-    }
-
-    .project-card--featured {
-      grid-column: 1 / -1;
-    }
-
-    .project-card--featured .project-info {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 0 48px;
-      align-items: end;
-    }
-
-    .project-card--featured .project-evidence {
-      margin-top: 0;
     }
 
     .work-card {
@@ -869,20 +854,6 @@
       .what-grid,
       .project-grid {
         grid-template-columns: minmax(0, 1fr);
-      }
-
-      .project-card--featured {
-        grid-column: auto;
-      }
-
-      .project-card--featured .project-info {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .project-card--featured .project-evidence {
-        margin-top: auto;
       }
 
       .what-card:hover,

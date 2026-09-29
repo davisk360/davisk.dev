@@ -25,7 +25,7 @@ const metricParts: MetricPart[] = [];
 if (project.metric) metricParts.push({ text: project.metric });
 if (liveLink && project.liveLabel) {
   metricParts.push({
-    prefix: 'LIVE / ',
+    prefix: `${project.status} / `,
     text: project.liveLabel,
     href: liveLink.href,
     aria: `Open ${project.title} live site`,
@@ -73,8 +73,19 @@ if (liveLink) thumbClasses.push('focus-ring');
         <img src={project.image} alt={`${project.title} product screenshot`} loading="lazy" />
       </div>
     )
-  ) : (
+  ) : project.art ? (
     <GateInitiativeArt />
+  ) : (
+    <div class="project-art project-art--dark project-art--gate" aria-hidden="true">
+      <div class="art-topline mono-text">
+        <span>{project.eyebrow}</span>
+        <span class="terminal-status">{project.status}</span>
+      </div>
+      <div class="terminal-lines mono-text">
+        <div><span class="terminal-mark">></span> pre-launch</div>
+        <div><span class="terminal-mark">></span> build log public on GitHub</div>
+      </div>
+    </div>
   )}
   <div class="project-info">
     <div class="project-heading-row">

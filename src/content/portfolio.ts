@@ -64,36 +64,12 @@ export const whatIDoItems: WhatIDoItem[] = [
 
 export const projects: Project[] = [
   {
-    slug: 'new-media-tek',
-    title: 'New Media Tek',
-    eyebrow: 'new media tek / cms',
-    status: 'LIVE',
-    description:
-      'Media platform with admin CMS and AI chatbot that logs conversations to InsForge.',
-    tags: ['React', 'Astro 5', 'Next.js', 'TypeScript', 'InsForge'],
-    liveLabel: 'NEWMEDIATEK.NET',
-    image: '/thumbs/new-media-tek.png',
-    imageFit: 'top',
-    links: [
-      {
-        label: 'Live site',
-        href: 'https://newmediatek.net/',
-        kind: 'live',
-      },
-      {
-        label: 'GitHub / New Media Tek',
-        href: 'https://github.com/davisk360/new-media-tek',
-        kind: 'github',
-      },
-    ],
-  },
-  {
     slug: 'thumpiks',
     title: 'ThumPiks',
     eyebrow: 'thumpiks / canvas',
-    status: 'AI',
+    status: 'STAGING',
     description:
-      'SaaS thumbnail creation platform with canvas editor, AI generation, billing, and collaboration.',
+      'SaaS thumbnail studio: two editors — quick and full canvas — with twelve AI tools: model-tiered image generation, inpainting, face swap, auto-layer decompose, CTR scoring, and video frame extraction. Stripe and Polar billing on a credit system with a real free plan. Currently in staging on a domain I own.',
     tags: ['React', 'TypeScript', 'Express', 'Prisma', 'Redis', 'Stripe', 'Polar', 'Playwright'],
     liveLabel: 'THUMBNAIL-MAKER-STUDIO',
     image: '/thumbs/thumpiks.png',
@@ -112,31 +88,12 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'asyndence',
-    title: 'Asyndence',
-    eyebrow: 'asyndence / timer',
-    status: 'DESKTOP',
-    description:
-      'Ultradian focus timer with BLE biometrics, breathing, soundscapes, and AI recovery.',
-    tags: ['Flutter', 'Dart', 'Riverpod', 'BLE', 'TTS', 'Biometrics', 'InsForge', 'Desktop'],
-    metric: '339 TESTS',
-    image: '/thumbs/asyndence.png',
-    imageFit: 'center',
-    links: [
-      {
-        label: 'GitHub / Asyndence',
-        href: 'https://github.com/Brimstow/Asyndence',
-        kind: 'github',
-      },
-    ],
-  },
-  {
     slug: 'gate-initiative',
     title: 'gateINITIATIVE',
     eyebrow: 'gateINITIATIVE / watcher',
     status: 'ENFORCING',
     description:
-      'Filesystem enforcement daemon for AI-driven development with YAML playbooks, tamper-resistant state, and ReDoS defense.',
+      'Filesystem enforcement daemon for AI-driven development: watches every file change, evaluates it against gates defined in your own documentation, and alerts, logs, or reverts violations. IDE-, VCS-, and CLI-agnostic, with tamper-resistant state and ReDoS-hardened rule parsing. The case study covers the first audit it caught — in its own repo.',
     tags: ['JavaScript', 'Node.js', 'chokidar', 'YAML', 'CLI'],
     metric: '5,000+ LINES · 240 TESTS',
     art: 'gate-initiative',
@@ -152,7 +109,50 @@ export const projects: Project[] = [
         kind: 'github',
       },
     ],
-    featured: true,
+  },
+  {
+    slug: 'new-media-tek',
+    title: 'New Media Tek',
+    eyebrow: 'new media tek / cms',
+    status: 'LIVE',
+    description:
+      'B2B consultancy site I co-founded and built end to end: Astro 5 static shell, a custom visual CMS with live preview, and an AI chatbot capturing leads into InsForge. Security-hardened through a Playwright-driven audit — CSP, XSS sanitization, rate limiting, and two-layer prompt-injection defense with guard prompts held in Netlify Blobs. Pages degrade to hardcoded copy if the database dies.',
+    tags: ['React', 'Astro 5', 'Next.js', 'TypeScript', 'InsForge'],
+    metric: 'SECURITY AUDIT 78→98 · CHATBOT 20→100',
+    liveLabel: 'NEWMEDIATEK.NET',
+    image: '/thumbs/new-media-tek.png',
+    imageFit: 'top',
+    links: [
+      {
+        label: 'Live site',
+        href: 'https://newmediatek.net/',
+        kind: 'live',
+      },
+      {
+        label: 'GitHub / New Media Tek',
+        href: 'https://github.com/davisk360/new-media-tek',
+        kind: 'github',
+      },
+    ],
+  },
+  {
+    slug: 'asyndence',
+    title: 'Asyndence',
+    eyebrow: 'asyndence / timer',
+    status: 'DESKTOP',
+    description:
+      'Desktop focus timer built around ultradian rhythms — it treats recovery as part of the work, not a failure of it. Guided breathing with ambient soundscapes; local-first storage with optional encrypted sync. BLE + HRV biometrics are built and tested — rolling into the guided recovery flow next.',
+    tags: ['Flutter', 'Dart', 'Riverpod', 'BLE', 'TTS', 'Biometrics', 'InsForge', 'Desktop'],
+    metric: '339 TESTS',
+    image: '/thumbs/asyndence.png',
+    imageFit: 'center',
+    links: [
+      {
+        label: 'GitHub / Asyndence',
+        href: 'https://github.com/Brimstow/Asyndence',
+        kind: 'github',
+      },
+    ],
   },
 ];
 
