@@ -111,6 +111,25 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: 'asyndence',
+    title: 'Asyndence',
+    eyebrow: 'asyndence / timer',
+    status: 'DESKTOP',
+    description:
+      'Desktop focus timer built around ultradian rhythms — it treats recovery as part of the work, not a failure of it. Guided breathing with ambient soundscapes; local-first storage with optional encrypted sync. BLE + HRV biometrics are built and tested — rolling into the guided recovery flow next.',
+    tags: ['Flutter', 'Dart', 'Riverpod', 'BLE', 'TTS', 'Biometrics', 'InsForge', 'Desktop'],
+    metric: '339 TESTS',
+    image: '/thumbs/asyndence.png',
+    imageFit: 'center',
+    links: [
+      {
+        label: 'GitHub / Asyndence',
+        href: 'https://github.com/Brimstow/Asyndence',
+        kind: 'github',
+      },
+    ],
+  },
+  {
     slug: 'new-media-tek',
     title: 'New Media Tek',
     eyebrow: 'new media tek / cms',
@@ -131,25 +150,6 @@ export const projects: Project[] = [
       {
         label: 'GitHub / New Media Tek',
         href: 'https://github.com/davisk360/new-media-tek',
-        kind: 'github',
-      },
-    ],
-  },
-  {
-    slug: 'asyndence',
-    title: 'Asyndence',
-    eyebrow: 'asyndence / timer',
-    status: 'DESKTOP',
-    description:
-      'Desktop focus timer built around ultradian rhythms — it treats recovery as part of the work, not a failure of it. Guided breathing with ambient soundscapes; local-first storage with optional encrypted sync. BLE + HRV biometrics are built and tested — rolling into the guided recovery flow next.',
-    tags: ['Flutter', 'Dart', 'Riverpod', 'BLE', 'TTS', 'Biometrics', 'InsForge', 'Desktop'],
-    metric: '339 TESTS',
-    image: '/thumbs/asyndence.png',
-    imageFit: 'center',
-    links: [
-      {
-        label: 'GitHub / Asyndence',
-        href: 'https://github.com/Brimstow/Asyndence',
         kind: 'github',
       },
     ],
