@@ -67,17 +67,17 @@ export const projects: Project[] = [
     slug: 'thumpiks',
     title: 'ThumPiks',
     eyebrow: 'thumpiks / canvas',
-    status: 'STAGING',
+    status: 'LIVE / BETA',
     description:
-      'SaaS thumbnail studio: two editors — quick and full canvas — with twelve AI tools: model-tiered image generation, inpainting, face swap, auto-layer decompose, CTR scoring, and video frame extraction. Stripe and Polar billing on a credit system with a real free plan. Currently in staging on a domain I own.',
+      'SaaS thumbnail studio: two editors — quick and full canvas — with twelve AI tools: model-tiered image generation, inpainting, face swap, auto-layer decompose, CTR scoring, and video frame extraction. Stripe and Polar billing on a credit system with a real free plan. Live in public beta at thumpiks.com.',
     tags: ['React', 'TypeScript', 'Express', 'Prisma', 'Redis', 'Stripe', 'Polar', 'Playwright'],
-    liveLabel: 'THUMBNAIL-MAKER-STUDIO',
+    liveLabel: 'THUMPIKS.COM',
     image: '/thumbs/thumpiks.png',
     imageFit: 'top',
     links: [
       {
         label: 'Live site',
-        href: 'https://thumbnail-maker-studio.netlify.app/',
+        href: 'https://thumpiks.com/',
         kind: 'live',
       },
       {
