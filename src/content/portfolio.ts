@@ -57,7 +57,7 @@ export const whatIDoItems: WhatIDoItem[] = [
     number: '03',
     title: 'Ship',
     description:
-      'Deployed web apps, a Flutter desktop app with 339 passing tests, and a filesystem daemon with 240 passing tests. All real codebases you can inspect.',
+      'Deployed web apps, a Flutter desktop app with 943 passing tests, and a filesystem daemon with 240 passing tests. All real codebases you can inspect.',
     tools: 'VERIFY · TEST · DEPLOY',
   },
 ];
@@ -118,7 +118,7 @@ export const projects: Project[] = [
     description:
       'Desktop focus timer built around ultradian rhythms — it treats recovery as part of the work, not a failure of it. Guided breathing with ambient soundscapes; local-first storage with optional encrypted sync. BLE + HRV biometrics are built and tested — rolling into the guided recovery flow next.',
     tags: ['Flutter', 'Dart', 'Riverpod', 'BLE', 'TTS', 'Biometrics', 'InsForge', 'Desktop'],
-    metric: '339 TESTS',
+    metric: '943 TESTS',
     image: '/thumbs/asyndence.png',
     imageFit: 'center',
     links: [
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     status: 'LIVE',
     description:
       'B2B consultancy site I co-founded and built end to end: Astro 5 static shell, a custom visual CMS with live preview, and an AI chatbot capturing leads into InsForge. Security-hardened through a Playwright-driven audit — CSP, XSS sanitization, rate limiting, and two-layer prompt-injection defense with guard prompts held in Netlify Blobs. Pages degrade to hardcoded copy if the database dies.',
-    tags: ['React', 'Astro 5', 'Next.js', 'TypeScript', 'InsForge'],
+    tags: ['React', 'Astro 5', 'TypeScript', 'Tailwind', 'InsForge'],
     metric: 'SECURITY AUDIT 78→98 · CHATBOT 20→100',
     liveLabel: 'NEWMEDIATEK.NET',
     image: '/thumbs/new-media-tek.png',
